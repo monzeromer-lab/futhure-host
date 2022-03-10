@@ -9,7 +9,8 @@ lerna-debug.log*
 #app config
 config.js
 
-#
+# code lab
+codelab.js
 
 # Diagnostic reports (https://nodejs.org/api/report.html)
 report.[0-9]*.[0-9]*.[0-9]*.[0-9]*.json

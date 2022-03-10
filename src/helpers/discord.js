@@ -33,8 +33,12 @@ client.on('interactionCreate', async interaction => {
 	} else if (commandName === 'server') {
 		await interaction.reply(`${interaction.version.toString()}`);
 	} else if (commandName === 'user') {
+		let avatar = await interaction.user.avatar.toString()
+		await interaction.reply(avatar)
+	} else if (commandName === "dm_me"){
 		let dm = await interaction.user.createDM(true)
 		await dm.send("Hi I'm Demo App I'm Here to let you know that I'm Working Lol") 
+		await interaction.reply("done")
 	}
 	
 });
