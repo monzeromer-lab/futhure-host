@@ -14,6 +14,7 @@ const commands = [
 	new SlashCommandBuilder().setName('ping').setDescription('Replies with pong!'),
 	new SlashCommandBuilder().setName('server').setDescription('Replies with server info!'),
 	new SlashCommandBuilder().setName('user').setDescription('Replies with user info!'),
+	new SlashCommandBuilder().setName('dm_me').setDescription('I will send you a dm')
 ].map(command => command.toJSON());
 
 const rest = new REST({ version: '9' }).setToken(config.discord.DISCORD_TOKEN);
@@ -30,13 +31,11 @@ client.on('interactionCreate', async interaction => {
 	if (commandName === 'ping') {
 		await interaction.reply('Pong!');
 	} else if (commandName === 'server') {
-		await interaction.reply(interaction.version);
+		await interaction.reply(`${interaction.version.toString()}`);
 	} else if (commandName === 'user') {
-		// await (await interaction.user.createDM(true)).send("Hi");
-		
+		let dm = await interaction.user.createDM(true)
+		await dm.send("Hi I'm Demo App I'm Here to let you know that I'm Working Lol") 
 	}
-
-	// console.log(`${interaction.user.tag} in #${interaction.channel.name} triggered an interaction.`);
 	
 });
 
