@@ -23,9 +23,9 @@ client.on('ready', (client) => {
 })
 
 const commands = [
-	new SlashCommandBuilder().setName('ping').setDescription('Replies with pong!'),
-	new SlashCommandBuilder().setName('server').setDescription('Replies with server info!'),
-	new SlashCommandBuilder().setName('user').setDescription('Replies with user info!'),
+	// new SlashCommandBuilder().setName('ping').setDescription('Replies with pong!'),
+	// new SlashCommandBuilder().setName('server').setDescription('Replies with server info!'),
+	// new SlashCommandBuilder().setName('user').setDescription('Replies with user info!'),
 	new SlashCommandBuilder().setName('إشتراكي').setDescription('سأرسل اليك معلومات اشتراكك في الخاص')
 ].map(command => command.toJSON());
 
@@ -46,6 +46,8 @@ function getTimeleft(dateFromDatebase) {
 
 	return date;
 }
+
+
 client.on('interactionCreate', async interaction => {
 	if (!interaction.isCommand()) return;
 
@@ -53,14 +55,15 @@ client.on('interactionCreate', async interaction => {
 		commandName
 	} = interaction;
 
-	if (commandName === 'ping') {
-		await interaction.reply('Pong!');
-	} else if (commandName === 'server') {
-		await interaction.reply(`${interaction.version.toString()}`);
-	} else if (commandName === 'user') {
-		let avatar = await interaction.user.avatar.toString()
-		await interaction.reply(avatar)
-	} else if (commandName === "إشتراكي") {
+	// if (commandName === 'ping') {
+	// 	await interaction.reply('Pong!');
+	// } else if (commandName === 'server') {
+	// 	await interaction.reply(`${interaction.version.toString()}`);
+	// } else if (commandName === 'user') {
+	// 	let avatar = await interaction.user.avatar.toString()
+	// 	await interaction.reply(avatar)
+	// } else
+	if (commandName === "إشتراكي") {
 		// confirm dm message
 		let dm = await interaction.user.createDM(true)
 		// save user id
@@ -83,7 +86,7 @@ client.on('interactionCreate', async interaction => {
 			await dm.send(subs)
 			await interaction.reply(`تم الإرسال`)
 		} else {
-			
+
 			await interaction.reply(`login with discord!`)
 		}
 
