@@ -26,4 +26,4 @@ const product_required = Joi.object({
     .required()
 })
 
-module.exports = {webhook_schema, order_required}
+module.exports = {webhook_schema, product_required}

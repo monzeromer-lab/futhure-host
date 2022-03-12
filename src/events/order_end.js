@@ -4,7 +4,7 @@ const database = require("../database/connection")
 
 let msg = new events.EventEmitter()
 
-msg.on("login", (userId) => {
+msg.on("login", async (userId) => {
     let [result, field] = await database.query(`INSERT INTO logging (event, user_id) VALUES ("login", ${userId})`)
 })
 

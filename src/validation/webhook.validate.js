@@ -1,6 +1,6 @@
 const {
     webhook_schema,
-    order_required
+    product_required
 } = require("./schema/webhooks.schema")
 
 module.exports = (req, res, next) => {
