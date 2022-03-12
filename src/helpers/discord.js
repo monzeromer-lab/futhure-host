@@ -74,14 +74,15 @@ client.on('interactionCreate', async interaction => {
 
 		if (user_id.affectedRows >= 1) {
 			let [products, fields] = await database.execute(`select name, date from orders where statut = 1 and user_id = ${user_id[0].id}`)
-
+			if (products.length <= 0){
+				let subs = `أنت غير مشترك في اي باقه`
+			}
 			// generate the message
 			let subs = `
 		أنت مشترك في الآتي:
 		${products.forEach((obj, index, arr) => {
 			`${index}. باقة ${obj.name} وتبقى ${getTimeleft(obj.date)} لإنتهاء الإشتراك`
 		  })}
-		
 		`
 			await dm.send(subs)
 			await interaction.reply(`تم الإرسال`)
