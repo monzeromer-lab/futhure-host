@@ -28,10 +28,10 @@ msg.on("new_order", async (userId, productId) => {
 
     let messageTime = date.getMilliseconds()
     
-    setTimeout(()=> {
+    setInterval(()=> {
         // send a message in discord
         discord.users.fetch(discordId[0].discord_id).then((Dm) => {
-            Dm.send(`thank you ${user_name[0].name} for your sub in ${product_name[0].name}`)
+            Dm.send(`${user_name[0].name} إشتراكك في باقة ${product_name[0].name} تبقى له 5 ايام`)
         })
     }, messageTime)
 
