@@ -1,9 +1,9 @@
 const express = require("express")
 const app = express()
-
+const discord = require("./helpers/discord")
 
 // import routers
-const Oauth_Router = require("./routers/Oauth")
+const webhooks = require("./webhooks/events")
 
 // parse request body to json
 app.use(express.json())
@@ -14,6 +14,16 @@ app.use(express.urlencoded({
 }))
 
 // use routers
-app.use('/', Oauth_Router)
+app.use('/', webhooks)
+
+// error handler
+app.use((err, req, res, next) => {
+    // console.error(err.stack)
+    res.status(500).json({
+        reqest_url: req.url,
+        error: true,
+        message: err
+    })
+  })
 
 module.exports = app
